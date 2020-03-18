@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '.github/workflows/r2s_lean.yml'
-      - 'config'
+  watch:
+    types: [started]
   schedule:
     - cron: '10 09 * * *'
 
@@ -164,6 +163,9 @@ jobs:
         run: |
           cd friendlywrt-rk3328/friendlywrt
           ./scripts/diffconfig.sh > ../out/config.lite
+
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
 
       - name: Assemble Artifact
         id: assemble_artifact
