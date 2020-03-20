@@ -160,9 +160,6 @@ jobs:
           zip -r "${img_file_name}.zip" $img_file_name
           echo "##[set-output name=release_tag;]$release_tag"
 
-      - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@master
-
       - name: Save config.lite
         run: |
           cd friendlywrt-rk3328/friendlywrt
